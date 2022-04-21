@@ -4,8 +4,9 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
+using Jellyfin.Data.Enums;
+using Jellyfin.Extensions.Json;
 using System.Threading.Tasks;
-using MediaBrowser.Common.Json;
 using MediaBrowser.Common.Net;
 using Microsoft.Extensions.Logging;
 using Jellyfin.Plugin.AnilistSync.API.Exceptions;
@@ -65,7 +66,7 @@ mutation ($id: Int, $mediaId: Int, $status: MediaListStatus, $progress: Int,) {
         {
             _logger = logger;
             _httpClientFactory = httpClientFactory;
-            _jsonSerializerOptions = JsonDefaults.GetOptions();
+            _jsonSerializerOptions = JsonDefaults.Options;
         }
 
         /// <summary>
