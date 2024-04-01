@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Jellyfin.Data.Enums;
 using Jellyfin.Plugin.AnilistSync.API;
 using Jellyfin.Plugin.AnilistSync.API.Exceptions;
 using Jellyfin.Plugin.AnilistSync.Configuration;
@@ -95,8 +96,8 @@ namespace Jellyfin.Plugin.AnilistSync.Services
             // Check if movie or episode then check against user config
             return playbackProgress.MediaInfo.Type switch
             {
-                nameof(Movie) => userConfig.ScrobbleMovies,
-                nameof(Episode) => userConfig.ScrobbleShows,
+                BaseItemKind.Movie => userConfig.ScrobbleMovies,
+                BaseItemKind.Episode => userConfig.ScrobbleShows,
                 _ => false
             };
         }
